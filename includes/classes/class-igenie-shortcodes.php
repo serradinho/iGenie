@@ -59,7 +59,7 @@ if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
 		}
 
 		/**
-		 * Sends the shortcode and callback to the native WP shortcode API
+		 * Sends the shortcode and callback to the native iGenie shortcode API
 		 * @param string $shortcode_name 
 		 */
 		public function register_shortcode( $shortcode_name ) {
@@ -197,7 +197,7 @@ if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
 		/**
 		 * Create the media button object
 		 * @param array $args
-		 * @return \Add_Shortcode 
+		 * @return Add_Shortcode 
 		 */
 		public function add_media_button( $args ) {
 			if ( !is_array( $args ) )
@@ -277,12 +277,12 @@ if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
 		 * Page displayed in the ThickBox utilitized by the media icon
 		 */
 		function popup() {
-			$script_url = plugins_url( dirname( plugin_basename( __FILE__ ) ) ) . '/wp-shortcodes-api.js';
+			$script_url = plugins_url( dirname( plugin_basename( __FILE__ ) ) ) . '/igenie-shortcodes-api.js';
 
 			//register scripts
-			wp_deregister_script( 'wp-shortcodes' );
-			wp_enqueue_script( 'wp-shortcodes', $script_url, 'jquery' );
-			wp_print_scripts( array( 'jquery', 'wp-shortcodes' ) );
+			wp_deregister_script( 'igenie-shortcodes' );
+			wp_enqueue_script( 'igenie-shortcodes', $script_url, 'jquery' );
+			wp_print_scripts( array( 'jquery', 'igenie-shortcodes' ) );
 
 			//register wp styles
 			wp_enqueue_style( 'colors' );
@@ -301,11 +301,11 @@ if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
 		 */
 		function popup_contents( $shortcode, $title, $intro_text, $sc_atts ) {
 			?>
-			<div class="wp-shortcode-popup wrap" style="padding: 10px 20px;">
+			<div class="igenie-shortcode-popup wrap" style="padding: 10px 20px;">
 				<h2 id="shortcode-title"><?php echo $title ?></h2>
 				<p id="shortcode-intro"><?php echo $intro_text ?></p>
 				<?php if ( $sc_atts ) : ?>
-					<form id="wp-shortcode" action="" >
+					<form id="igenie-shortcode" action="" >
 						<table class="form-table">    
 							<tbody>
 								<?php foreach ($sc_atts as $att) : ?>
@@ -341,7 +341,7 @@ if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
 	function has_shortcode( $shortcode_name, $post_id = 0 ) {
 		$post = &get_post( $post_id );
 		$post_id = isset( $post->ID ) ? $post->ID : (int) $post_id;
-		return WP_Shortcodes_API::ShortcodeInPost( $shortcode_name, $post_id );
+		return iGenie_Shortcodes_API::ShortcodeInPost( $shortcode_name, $post_id );
 	}
 
 } // end if class_exists condition
