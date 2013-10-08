@@ -1,12 +1,13 @@
-<?php
-/*
-  Plugin Name: iGenie Shortcodes API
-  Plugin URI: http://plugins.voceconnect.com/
-  Description: Advanced Shortcodes.
-  Author: markparolisi, voceplatforms
-  Contributors: smccafferty
-  Version: 0.8
-  Author URI: http://plugins.voceconnect.com/
+<?php 
+
+/**
+ * iGenie Shortcodes API.
+ *
+ * @package   iGenie Shortcodes API
+ * @author    George Serradinho <info@serradinho.biz>
+ * @license   GPL-2.0+
+ * @link      http://www.serradinho.biz
+ * @copyright 2013 George Serradinho / Serradinho Web Services
  */
 
 if ( !class_exists( 'iGenie_Shortcodes_API' ) ) {
